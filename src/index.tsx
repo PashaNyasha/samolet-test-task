@@ -7,6 +7,7 @@ import {HOME_ROUTE} from "./route";
 import {createAppStore} from "./_utils/create-app-store";
 import {Provider} from "react-redux";
 import {MainPage} from "./pages/home";
+import {RouterProvider} from "react-router5";
 
 const ROOT = document.getElementById("root");
 
@@ -29,9 +30,11 @@ router.setDependencies({routes, store});
 
 router.start(() => {
   ReactDOM.render(
-    <Provider store={store}>
-      <MainPage router={router} />
-    </Provider>,
+    <RouterProvider router={router}>
+      <Provider store={store}>
+        <MainPage />
+      </Provider>
+    </RouterProvider>,
     ROOT
   );
 });

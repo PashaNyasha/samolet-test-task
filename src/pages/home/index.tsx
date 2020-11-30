@@ -1,18 +1,23 @@
-import React, {memo} from "react";
-import classnames from "classnames/bind";
-import styles from "./index.module.scss";
-import { PagePropsType } from "../../_types/page-props-type";
+import React, {memo, useEffect, useMemo} from "react";
+import {MAIN_PAGE_NODE, TABLE_PAGE_NODE} from "./_constants/page-nodes";
+import {useRoute} from "react-router5";
+import {checkRoutes} from "./_utils/check-routes";
 
-const CLASS_NAME = "Main-page";
-const cn = classnames.bind(styles);
+export const MainPage = memo(() => {
+  const {
+    route: {name},
+    router,
+  } = useRoute();
 
-export const MainPage = memo(({ router }: PagePropsType) => {
-    const {store} = router.getDependencies();
+  const isMainPage = useMemo(() => name === MAIN_PAGE_NODE, [name]);
 
-    console.log(store.getState());
-  return (
-    <div className={cn(CLASS_NAME)}>
-        Hello
-    </div>
-  );
+  useEffect(() => {
+    if (isMainPage) {
+      router.navigate(TABLE_PAGE_NODE);
+    }
+  });
+
+  const content = useMemo(() => checkRoutes({routeName: name}), [name]);
+
+  return <>{content}</>;
 });
