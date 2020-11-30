@@ -1,18 +1,24 @@
 import {RequestQueryParams} from "./_types";
 
-type RequestParamsType = {
+export type RequestParamsType = {
   endpoint: string;
   queryParams?: RequestQueryParams;
-  requestParams?: RequestInit;
+  options?: RequestInit;
   body?: any;
+};
+
+export type RequestResultType = {
+  data: any;
+  hasError: boolean;
+  errorText: string;
 };
 
 export const request = async ({
   endpoint,
   queryParams,
-  requestParams,
+  options,
   body,
-}: RequestParamsType): Promise<any> => {
+}: RequestParamsType): Promise<RequestResultType> => {
   try {
     let newEndpoint = endpoint;
 
@@ -40,8 +46,8 @@ export const request = async ({
       method: "GET",
     };
 
-    if (requestParams) {
-      options = {...options, ...requestParams};
+    if (options) {
+      options = {...options, ...options};
     }
 
     if (body) {
@@ -56,8 +62,18 @@ export const request = async ({
       );
     }
 
-    return await response.json();
+    const data = await response.json();
+
+    return {
+      data,
+      hasError: false,
+      errorText: "",
+    };
   } catch (error) {
-    console.error(error);
+    return {
+      data: {},
+      hasError: true,
+      errorText: error.message,
+    };
   }
 };
