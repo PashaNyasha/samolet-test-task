@@ -98,16 +98,31 @@ export type LibrariesDataType = {
 
 export type LibrariesListItemType = {
   territory: string;
-  librariesCount: string;
+  librariesCount: Number;
   order: number;
+};
+
+export type LibrarySortType = {
+  destination: DestinationType;
+  isTerritory: boolean;
 };
 
 export type LibrariesListStorageType = {
   libraries: Array<LibrariesDataType>;
   librariesList: Array<LibrariesListItemType>;
+  sortByRegion: LibrarySortType;
+  sortByLibrariesCount: LibrarySortType;
 };
 
 export type LibrariesListActionType = {
   type: string;
-  payload?: Array<LibrariesListItemType>;
+  payload?:
+    | Array<LibrariesDataType>
+    | Array<LibrariesListItemType>
+    | LibrarySortType;
 };
+
+export enum DestinationType {
+  ASC = "ASC",
+  DESC = "DESC",
+}

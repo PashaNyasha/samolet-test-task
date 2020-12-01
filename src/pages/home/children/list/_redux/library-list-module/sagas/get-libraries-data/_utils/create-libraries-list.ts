@@ -9,6 +9,6 @@ export const createLibrariesList = ({
 }: ParamsType): Array<LibrariesListItemType> =>
   data.map(({territory, order, libraries}) => ({
     territory,
-    librariesCount: `Количество библиотек: ${libraries}`,
+    librariesCount: libraries,
     order,
   }));
