@@ -3,6 +3,7 @@ import {
   SET_LIBRARIES_LIST_ACTION,
   SET_SORT_BY_REGION_STATUS_ACTION,
   SET_SORT_BY_LIBRARIES_COUNT_STATUS_ACTION,
+  RESET_LIBRARIES_DATA_ACTION,
 } from "./actions";
 import {
   DestinationType,
@@ -29,6 +30,7 @@ export const librariesListReducer = (
   state: LibrariesListStorageType = initialState,
   {type, payload}: LibrariesListActionType
 ) => {
+  console.log(type, payload)
   switch (type) {
     case SET_LIBRARIES_DATA_ACTION:
       return {...state, libraries: payload};
@@ -41,6 +43,9 @@ export const librariesListReducer = (
 
     case SET_SORT_BY_LIBRARIES_COUNT_STATUS_ACTION:
       return {...state, sortByLibrariesCount: payload};
+
+    case RESET_LIBRARIES_DATA_ACTION:
+      return initialState;
 
     default:
       return state;
