@@ -12,18 +12,6 @@ export const setLibraryInfoAction: AdvancedActionType<Array<LibraryInfoType>> = 
   payload,
 });
 
-export const START_LOADING_LIBRARY_INFO_ACTION =
-  "START_LOADING_LIBRARY_INFO_ACTION";
-export const startLoadingLibraryInfoAction: BaseActionType = () => ({
-  type: START_LOADING_LIBRARY_INFO_ACTION,
-});
-
-export const STOP_LOADING_LIBRARY_INFO_ACTION =
-  "STOP_LOADING_LIBRARY_INFO_ACTION";
-export const stopLoadingLibraryInfoAction: BaseActionType = () => ({
-  type: STOP_LOADING_LIBRARY_INFO_ACTION,
-});
-
 export const GET_LIBRARY_INFO_ACTION_SAGA = "GET_LIBRARY_INFO_ACTION_SAGA";
 export const getLibraryInfoActionSaga: AdvancedActionType<number> = (
   payload

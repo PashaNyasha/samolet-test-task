@@ -105,7 +105,6 @@ export type LibrariesListItemType = {
 export type LibrariesListStorageType = {
   libraries: Array<LibrariesDataType>;
   librariesList: Array<LibrariesListItemType>;
-  isLoading: boolean;
 };
 
 export type LibrariesListActionType = {

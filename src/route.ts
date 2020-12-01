@@ -5,5 +5,4 @@ export const HOME_ROUTE = {
   name: MAIN_PAGE_NODE,
   path: "/library",
   children: [TABLE_ROUTE],
-  onActivate: () => console.log('ACTIVE')
 };

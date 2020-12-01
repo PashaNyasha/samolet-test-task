@@ -7,7 +7,6 @@ export type LibraryInfoType = {
 
 export type LibraryInfoStorageType = {
   library: Array<LibraryInfoType>;
-  isLoading: boolean;
 };
 
 export type LibraryInfoActionType = {
