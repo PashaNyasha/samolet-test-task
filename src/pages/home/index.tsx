@@ -2,7 +2,7 @@ import React, {memo, useEffect, useMemo} from "react";
 import {
   LIBRARY_INFO_PAGE_NODE,
   MAIN_PAGE_NODE,
-  TABLE_PAGE_NODE,
+  LIST_PAGE_NODE,
 } from "./_constants/page-nodes";
 import {useRoute} from "react-router5";
 import {checkRoutes} from "./_utils/check-routes";
@@ -20,7 +20,7 @@ export const MainPage = memo(() => {
 
   useEffect(() => {
     if (isWrongInitRoute) {
-      router.navigate(TABLE_PAGE_NODE);
+      router.navigate(LIST_PAGE_NODE);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

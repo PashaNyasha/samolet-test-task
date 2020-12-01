@@ -8,6 +8,8 @@ import {createAppStore} from "./_utils/create-app-store";
 import {Provider} from "react-redux";
 import {MainPage} from "./pages/home";
 import {RouterProvider} from "react-router5";
+import {ConnectedRoot} from "./_components/root";
+import {ConnectedErrorBoundary} from "./_components/error-boundary";
 
 const ROOT = document.getElementById("root");
 
@@ -32,7 +34,10 @@ router.start(() => {
   ReactDOM.render(
     <RouterProvider router={router}>
       <Provider store={store}>
-        <MainPage />
+        <ConnectedErrorBoundary>
+          <ConnectedRoot />
+          <MainPage />
+        </ConnectedErrorBoundary>
       </Provider>
     </RouterProvider>,
     ROOT

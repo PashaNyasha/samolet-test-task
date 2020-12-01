@@ -10,8 +10,3 @@ export const getLibraryInfoSelector = createSelector(
   [getLibraryInfoStorageSelector],
   ({library}: LibraryInfoStorageType) => library
 );
-
-export const isLibraryInfoLoadingSelector = createSelector(
-  [getLibraryInfoStorageSelector],
-  ({isLoading}: LibraryInfoStorageType) => isLoading
-);

@@ -17,8 +17,3 @@ export const getLibrariesListSelector = createSelector(
   ({librariesList}: LibrariesListStorageType): Array<LibrariesListItemType> =>
     librariesList
 );
-
-export const isLibrariesListLoadingSelector = createSelector(
-  [getLibrariesListStorageSelector],
-  ({isLoading}: LibrariesListStorageType): boolean => isLoading
-);

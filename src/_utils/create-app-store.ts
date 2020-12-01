@@ -1,14 +1,13 @@
 import {Router} from "router5";
 import createSagaMiddleware from "redux-saga";
 import {enableBatching, batchDispatchMiddleware} from "redux-batched-actions";
-import {applyMiddleware, createStore, Reducer, Store} from "redux";
+import {applyMiddleware, createStore} from "redux";
 import {createReducers} from "./create-reducers";
-import { IAppStore } from "../_types/app-store";
+import {IAppStore} from "../_types/app-store";
 
 type ParamsType = {
   router: Router;
 };
-
 
 export const createAppStore = ({router}: ParamsType) => {
   const sagaMiddleware = createSagaMiddleware();

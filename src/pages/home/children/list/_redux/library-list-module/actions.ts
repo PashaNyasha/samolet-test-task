@@ -20,18 +20,6 @@ export const setLibrariesListAction: AdvancedActionType<
   payload,
 });
 
-export const START_LOADING_LIBRARIES_DATA_ACTION =
-  "START_LOADING_LIBRARIES_DATA_ACTION";
-export const startLoadingLibrariesDataAction: BaseActionType = () => ({
-  type: START_LOADING_LIBRARIES_DATA_ACTION,
-});
-
-export const STOP_LOADING_LIBRARIES_DATA_ACTION =
-  "STOP_LOADING_LIBRARIES_DATA_ACTION";
-export const stopLoadingLibrariesDataAction: BaseActionType = () => ({
-  type: STOP_LOADING_LIBRARIES_DATA_ACTION,
-});
-
 export const GET_LIBRARIES_DATA_ACTION_SAGA = "GET_LIBRARIES_DATA_ACTION_SAGA";
 export const getLibrariesDataActionSaga: BaseActionType = () => ({
   type: GET_LIBRARIES_DATA_ACTION_SAGA,
