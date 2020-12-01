@@ -1,6 +1,6 @@
 import React from "react";
 import {LibrariesListPage} from "../children/list";
-import {LibraryInfoPage} from "../children/list/page/children/page";
+import { ConnectedLibraryInfo } from "../children/list/page/children/page/_components/library-info";
 import {
   LIBRARY_INFO_PAGE_NODE,
   LIST_PAGE_NODE,
@@ -16,7 +16,7 @@ export const checkRoutes = ({routeName}: ParamsType): JSX.Element => {
       return <LibrariesListPage />;
 
     case LIBRARY_INFO_PAGE_NODE:
-      return <LibraryInfoPage />;
+      return <ConnectedLibraryInfo />;
 
     default:
       return <div className="">Hello</div>;

@@ -1,8 +1,16 @@
 import React, {useCallback} from "react";
 import {connect} from "react-redux";
 import {ReduxStorageType} from "../../../../../_types/redux-storage-type";
-import {LibrariesListItemType} from "../_redux/library-list-module";
-import {getLibrariesListSelector} from "../_redux/library-list-module/selectors";
+import {
+  LibrariesListItemType,
+  LibrarySortType,
+  sortLibrariesDataActionSaga,
+} from "../_redux/library-list-module";
+import {
+  getLibrariesListSelector,
+  getSortByLibrariesCountSelector,
+  getSortByRegionStatusSelector,
+} from "../_redux/library-list-module/selectors";
 import {List} from "antd";
 import {LibrariesListItem} from "./_components/libraries-list-item";
 import {useRoute} from "react-router5";
@@ -12,10 +20,19 @@ import {AdvancedActionType} from "../../../../../_types/actions";
 
 type PropsType = {
   libraries: Array<LibrariesListItemType>;
+  sortByRegion: LibrarySortType;
+  sortByLibrariesCount: LibrarySortType;
   onGetLibraryInfo: AdvancedActionType<number>;
+  onSort: AdvancedActionType<LibrarySortType>;
 };
 
-export const WrappedComponent = ({libraries, onGetLibraryInfo}: PropsType) => {
+export const WrappedComponent = ({
+  libraries,
+  sortByRegion,
+  sortByLibrariesCount,
+  onGetLibraryInfo,
+  onSort,
+}: PropsType) => {
   const {router} = useRoute();
 
   const handleChangeRoute = useCallback(
@@ -26,9 +43,21 @@ export const WrappedComponent = ({libraries, onGetLibraryInfo}: PropsType) => {
     [onGetLibraryInfo, router]
   );
 
+  const handleSortByRegion = useCallback(() => {
+    onSort(sortByRegion);
+  }, [onSort, sortByRegion]);
+
+  const handleSortByLibrariesCount = useCallback(() => {
+    onSort(sortByLibrariesCount);
+  }, [onSort, sortByLibrariesCount]);
+
   return (
     <>
-    <button>Назад</button>
+      <button onClick={handleSortByRegion}>Сортировать по региону</button>
+      <button onClick={handleSortByLibrariesCount}>
+        Сортировать по кол-ву библиотек
+      </button>
+
       <List
         dataSource={libraries}
         loading={true}
@@ -47,10 +76,13 @@ export const WrappedComponent = ({libraries, onGetLibraryInfo}: PropsType) => {
 
 const mapStateToProps = (state: ReduxStorageType) => ({
   libraries: getLibrariesListSelector(state),
+  sortByRegion: getSortByRegionStatusSelector(state),
+  sortByLibrariesCount: getSortByLibrariesCountSelector(state),
 });
 
 const mapDispatchToProps = {
   onGetLibraryInfo: getLibraryInfoActionSaga,
+  onSort: sortLibrariesDataActionSaga,
 };
 
 export const ConnectedLibrariesPage = connect(

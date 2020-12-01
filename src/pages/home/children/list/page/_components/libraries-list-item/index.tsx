@@ -1,4 +1,4 @@
-import React, {memo, useCallback} from "react";
+import React, {memo, useCallback, useMemo} from "react";
 import classnames from "classnames/bind";
 import styles from "./index.module.scss";
 import {List} from "antd";
@@ -13,14 +13,19 @@ type PropsType = {
 
 export const LibrariesListItem = memo(
   ({territory, librariesCount, order, onChangeRoute}: PropsType) => {
-    const handleClick = useCallback(
-      () => onChangeRoute(order),
-      [onChangeRoute, order]
+    const handleClick = useCallback(() => onChangeRoute(order), [
+      onChangeRoute,
+      order,
+    ]);
+
+    const librariesCountText = useMemo(
+      () => `Количество библиотек: ${librariesCount}`,
+      [librariesCount]
     );
 
     return (
       <button onClick={handleClick} type="button" className={cn(CLASS_NAME)}>
-        <List.Item.Meta title={territory} description={librariesCount} />
+        <List.Item.Meta title={territory} description={librariesCountText} />
       </button>
     );
   }
