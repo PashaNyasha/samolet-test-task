@@ -49,7 +49,8 @@ export type LibrariesTableItemServerType = {
 
 export type LibrariesTableItemType = {
   territory: string;
-  libraries: number;
+  librariesCount: string;
+  order: number;
 };
 
 export type LibrariesTableStorageType = {
