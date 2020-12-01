@@ -1,5 +1,5 @@
 import {Button, Typography} from "antd";
-import React, {useCallback} from "react";
+import React, {useCallback, useEffect} from "react";
 import {connect} from "react-redux";
 import {ReduxStorageType} from "../../../../../../../../../_types/redux-storage-type";
 import {LibraryInfoType} from "../../../_redux/library-info-module";
@@ -20,6 +20,7 @@ export const WrappedComponent = ({library}: PropsType) => {
   const {
     router: {navigate},
   } = useRoute();
+
   const handleGoBack = useCallback(() => navigate(LIST_PAGE_NODE), [navigate]);
 
   return (

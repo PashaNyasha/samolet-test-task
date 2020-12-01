@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React, {memo, useEffect} from "react";
 import {useRoute} from "react-router5";
 import {injectAsyncReducers} from "../../../../_utils/inject-async-reducers";
 import {injectAsyncSagas} from "../../../../_utils/inject-async-sagas";
@@ -11,7 +11,7 @@ import {
   getLibraryInfoWatcherSaga,
   GET_LIBRARY_INFO_WATECHER_SAGA,
 } from "./page/children/_redux/library-info-module/sagas/get-library-info/watcher-saga";
-import {getLibrariesDataActionSaga} from "./_redux/library-list-module/actions";
+import {getLibrariesDataActionSaga, resetLibrariesDataAction} from "./_redux/library-list-module/actions";
 import {
   librariesListReducer,
   LIBRARIES_LIST_REDUCER_NAME,
@@ -64,5 +64,7 @@ export const LibrariesListPage = memo(() => {
 
   store.dispatch(getLibrariesDataActionSaga());
 
+  useEffect(() => () =>  store.dispatch(resetLibrariesDataAction()));
+  
   return <ConnectedLibrariesPage />;
 });

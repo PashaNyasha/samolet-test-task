@@ -63,3 +63,8 @@ export const setSortByLibrariesCountStatusAction: AdvancedActionType<LibrarySort
   type: SET_SORT_BY_LIBRARIES_COUNT_STATUS_ACTION,
   payload,
 });
+
+export const RESET_LIBRARIES_DATA_ACTION = "RESET_LIBRARIES_DATA_ACTION";
+export const resetLibrariesDataAction: BaseActionType = () => ({
+  type: RESET_LIBRARIES_DATA_ACTION,
+});
