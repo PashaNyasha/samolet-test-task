@@ -1,0 +1,12 @@
+.Libraries-table {
+  background: none;
+  text-align: left;
+  padding: 10px;
+  border: none;
+  display: block;
+  cursor: pointer;
+
+  &:hover {
+    background: #ffc000;
+  }
+}

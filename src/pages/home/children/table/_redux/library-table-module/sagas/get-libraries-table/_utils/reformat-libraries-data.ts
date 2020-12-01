@@ -10,4 +10,8 @@ type ParamsType = {
 export const reformatLibrariesTable = ({
   data,
 }: ParamsType): Array<LibrariesTableItemType> =>
-  data.map(({territory, libraries}) => ({territory, libraries}));
+  data.map(({territory, order, libraries}) => ({
+    territory,
+    librariesCount: `Количество библиотек: ${libraries}`,
+    order,
+  }));
