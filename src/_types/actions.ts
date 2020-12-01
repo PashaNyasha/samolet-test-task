@@ -3,8 +3,8 @@ export type BaseActionType = () => {
 };
 
 export type AdvancedActionType<T> = (
-  payload?: T
+  payload: T
 ) => {
   type: string;
-  payload?: T;
+  payload: T;
 };
