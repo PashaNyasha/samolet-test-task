@@ -1,0 +1,12 @@
+.Library-info {
+  padding: 20px;
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-left: 24px;
+
+    &-value {
+      margin-left: 14px;
+    }
+  }
+}

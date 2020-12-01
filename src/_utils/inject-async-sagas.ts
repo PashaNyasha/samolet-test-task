@@ -1,10 +1,9 @@
-import {Saga} from "redux-saga";
 import { IAppStore } from "../_types/app-store";
 
 type ParamsType = {
   store: IAppStore;
   name: string;
-  saga: Saga;
+  saga: any;
 };
 
 export const injectAsyncSagas = ({store, name, saga}: ParamsType) => {
